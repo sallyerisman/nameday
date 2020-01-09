@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../images/watercolor-bright.jpg");
+    background-size: cover;
+    color: #333; 
+}
+
+.container {
+	max-width: 960px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-search,
+.date-search {
+    background-color: #d9f1e3;
+    padding: 6px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-search {
+    margin-top: 3rem;
+}
+
+.input-field.first-wrap {
+    width: 85%;
+}
+
+#button {
+    font-size: 30px;
+    color: #00ad5f;
+    background-color: transparent;
+}
+
+button, input[type="color"], input[type="reset"], input[type="button"], input[type="submit"] {
+    border: none;
+    background-color: none;
+}
+
+#name,
+#date {
+    background: none;
+    border: none;
+    box-shadow: none; 
+}
+
+#result-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.result {
+    background-color: #d9f1e3;
+    text-align: center;
+    border-radius: 30px;
+    padding: 2rem 0.5rem;
+}
+
+
+
+
+
+
