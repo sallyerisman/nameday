@@ -55,13 +55,6 @@ button, input[type="color"], input[type="reset"], input[type="button"], input[ty
     background-color: none;
 }
 
-#name,
-#date {
-    background: none;
-    border: none;
-    box-shadow: none; 
-}
-
 #result-wrapper {
     display: flex;
     justify-content: center;
