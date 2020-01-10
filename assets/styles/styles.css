@@ -44,7 +44,8 @@ body {
     width: 85%;
 }
 
-#button {
+#date-button,
+#name-button {
     font-size: 30px;
     color: #00ad5f;
     background-color: transparent;
