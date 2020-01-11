@@ -65,6 +65,16 @@ button, input[type="color"], input[type="reset"], input[type="button"], input[ty
     background-color: none;
 }
 
+input[type="radio"]:checked {
+    background-color: #00ad5f;
+}
+
+.form-check {
+    margin-top: 1rem;
+    background-color: #d9f1e3;
+    padding: 0.2rem;
+}
+
 #result-wrapper {
     display: flex;
     justify-content: center;
