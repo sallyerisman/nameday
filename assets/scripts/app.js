@@ -71,7 +71,7 @@ searchForm.addEventListener("submit", function(e) {
             if(200) {
                 renderNames(date, country, month, day);
             } else {
-                console.log("Error, name not found");
+                renderError();
             } 
 		})
 		.catch(renderError);
@@ -79,9 +79,13 @@ searchForm.addEventListener("submit", function(e) {
         getDayByName(nameSearch, country)
 		.then(name => {
             if(200) {
-                renderDay(name, nameSearch);
+                if (name.results.length > 0) {
+                    renderDay(name, nameSearch);
+                } else {
+                    resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+                }                
             } else {
-                console.log("Error, not 200");
+                renderError();
             }   
 		})
 		.catch(renderError);
