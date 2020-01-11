@@ -1,4 +1,5 @@
 const searchForm = document.querySelector("#search-form");
+const resultWrapper = document.querySelector("#result-wrapper");
 
 //Function for rendering date of specific name day
 const renderDay = (name, nameSearch) => {
@@ -6,7 +7,7 @@ const renderDay = (name, nameSearch) => {
     name.results.forEach(nameEl => {
         nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
 
-        document.querySelector("#result-wrapper").innerHTML = `
+        resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
                 <h1 class="title">${nameSearch}</h1>
                 <p class="card-text">has a name day on ${nameEl.day}/${nameEl.month}</p>
@@ -19,19 +20,19 @@ const renderDay = (name, nameSearch) => {
 // //Function for rendering name days on a specific day
 const renderNames = (date, country, month, day) => {
 
-    // const namedaysByCountry = date.data.map(names => {
-    //     `${names.namedays}.${country} has a name day!`
-    // });
-
-    // console.log(`Get:${date.data[0].namedays}.${country}`);
-  
-    document.querySelector("#result-wrapper").innerHTML = `
+    resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
         <h1 class="title">${day}/${month}</h1>
-        <p class="card-text">This is the name day of: ${date.data[0].namedays.us}.</p>
+        <p class="card-text">This is the name day of: ${date.data[0].namedays[country]}.</p>
     </div>
     `;   
 };
+
+// Function for rendering error message
+const renderError = () => {
+    resultWrapper.innerHTML = `<div class="alert alert-danger">Sökning misslyckades: Det gick inte att hämta data för denna begäran.</div>`;
+};
+
 
 // Event listener for radio buttons
 document.querySelector(".radio-buttons").addEventListener("click", function(e) {
@@ -69,12 +70,10 @@ searchForm.addEventListener("submit", function(e) {
             if(200) {
                 renderNames(date, country, month, day);
             } else {
-                console.log("Error, not 200");
+                console.log("Error, name not found");
             } 
 		})
-		.catch(err => {
-			console.log("Error:", err);
-    	});
+		.catch(renderError);
     } else if (inputName) {
         getDayByName(nameSearch, country)
 		.then(name => {
@@ -84,9 +83,7 @@ searchForm.addEventListener("submit", function(e) {
                 console.log("Error, not 200");
             }   
 		})
-		.catch(err => {
-			console.log("Error:", err);
-        });
+		.catch(renderError);
         
     } else {
         console.log("You did not select an option");

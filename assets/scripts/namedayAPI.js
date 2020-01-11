@@ -1,5 +1,5 @@
 
-// API for search by name:
+// Exmaple API for search by name:
 // https://api.abalin.net/getdate?name=John&country=us
 
 const getDayByName = async(name, country) => {
@@ -13,11 +13,11 @@ const getDayByName = async(name, country) => {
 };
 
 
-// API for search by date:
+// Example API for search by date:
 // https://api.abalin.net/namedays?country=us&month=7&day=15
 
 const getNamesByDay = async(country, month, day) => {
-    // Get name day names on a specific date
+    // Get name day on a specific date
     const response = await fetch(`https://api.abalin.net/namedays?country=${country}&month=${month}&day=${day}`);
 
     // Convert response from JSON
