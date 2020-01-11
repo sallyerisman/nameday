@@ -16,7 +16,7 @@ const renderDay = (name, nameSearch) => {
     })
 };
 
-// //Function for rendering date of specific name day
+// //Function for rendering name days on a specific day
 const renderNames = (date, country, month, day) => {
 
     // const namedaysByCountry = date.data.map(names => {
@@ -33,14 +33,13 @@ const renderNames = (date, country, month, day) => {
     `;   
 };
 
-
 // Event listener for radio buttons
-document.querySelector(".radio-buttons").addEventListener('click', function(e) {
+document.querySelector(".radio-buttons").addEventListener("click", function(e) {
     
-    const nameSearch = document.querySelector('#name-search');
-    const dateSearch = document.querySelector('#date-search');
-    const byName = document.querySelector('#by-name');
-    const byDate = document.querySelector('#by-date');
+    const nameSearch = document.querySelector("#name-search");
+    const dateSearch = document.querySelector("#date-search");
+    const byName = document.querySelector("#by-name");
+    const byDate = document.querySelector("#by-date");
 
     if (byName.checked) {
         nameSearch.classList.add("show");
@@ -53,7 +52,7 @@ document.querySelector(".radio-buttons").addEventListener('click', function(e) {
 });
 
 // Event listener for submit button
-searchForm.addEventListener('submit', function(e) {
+searchForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
     const day = document.querySelector("#day").value;
@@ -81,7 +80,6 @@ searchForm.addEventListener('submit', function(e) {
 		.then(name => {
             if(200) {
                 renderDay(name, nameSearch);
-                console.log("All is well");
             } else {
                 console.log("Error, not 200");
             }   
