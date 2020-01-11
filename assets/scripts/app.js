@@ -1,13 +1,21 @@
+/*
+* NAME DAY APP
+* Main script
+*/
+
 const searchForm = document.querySelector("#search-form");
 const resultWrapper = document.querySelector("#result-wrapper");
 
 //Function for rendering date of specific name day
 const renderDay = (name, nameSearch) => {
-
     name.results.forEach(nameEl => {
+        
         // Capitalize name input
         nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
-
+        
+        if (nameEl.name !== nameSearch) {
+            resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+        } else {
         resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
                 <h1 class="title">${nameSearch}</h1>
@@ -16,12 +24,12 @@ const renderDay = (name, nameSearch) => {
                 <img class="cake" src="assets/images/cake.png" alt="Cake"> 
             </div>
             `;
+        }
     });
 };
 
 //Function for rendering name days on a specific day
 const renderNames = (date, country, month, day) => {
-
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
         <h1 class="title">${day}/${month}</h1>
@@ -83,7 +91,7 @@ searchForm.addEventListener("submit", function(e) {
 		})
 		.catch(renderError);    
     } else {
-        console.log("You did not select an option");
+        resultWrapper.innerHTML = `<div class="alert alert-warning">Sökning misslyckades. Vänligen sök på antingen namn eller datum.</div>`;
     }
     searchForm.reset();
 });

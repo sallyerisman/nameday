@@ -1,7 +1,9 @@
+/*
+* NAME DAY APP
+* Script for fetching API data
+*/
 
-// Exmaple API for search by name:
-// https://api.abalin.net/getdate?name=John&country=us
-
+// Fetch API data based on name search
 const getDayByName = async(name, country) => {
     // Get date of a specific name day
     const response = await fetch(`https://api.abalin.net/getdate?name=${name}&country=${country}`);
@@ -12,10 +14,7 @@ const getDayByName = async(name, country) => {
     return day;
 };
 
-
-// Example API for search by date:
-// https://api.abalin.net/namedays?country=us&month=7&day=15
-
+// Fetch API data based on date search
 const getNamesByDay = async(country, month, day) => {
     // Get name day on a specific date
     const response = await fetch(`https://api.abalin.net/namedays?country=${country}&month=${month}&day=${day}`);
