@@ -10,11 +10,12 @@ const renderDay = (name, nameSearch) => {
         resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
                 <h1 class="title">${nameSearch}</h1>
-                <p class="card-text">has a name day on ${nameEl.day}/${nameEl.month}</p>
-                <p class="card-text">All names celebrating their name day on this day: ${nameEl.name}.</p>
+                <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
+                <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
+                <img class="cake" src="assets/images/cake.png" alt="Cake"> 
             </div>
         `;
-    })
+    });
 };
 
 // //Function for rendering name days on a specific day
@@ -23,7 +24,8 @@ const renderNames = (date, country, month, day) => {
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
         <h1 class="title">${day}/${month}</h1>
-        <p class="card-text">This is the name day of: ${date.data[0].namedays[country]}.</p>
+        <p class="card-text">På denna dag i har ${date.data[0].namedays[country]} namnsdag!</p>
+        <img class="cake" src="assets/images/cake.png" alt="Cake">  
     </div>
     `;   
 };
@@ -32,7 +34,6 @@ const renderNames = (date, country, month, day) => {
 const renderError = () => {
     resultWrapper.innerHTML = `<div class="alert alert-danger">Sökning misslyckades: Det gick inte att hämta data för denna begäran.</div>`;
 };
-
 
 // Event listener for radio buttons
 document.querySelector(".radio-buttons").addEventListener("click", function(e) {
@@ -88,4 +89,5 @@ searchForm.addEventListener("submit", function(e) {
     } else {
         console.log("You did not select an option");
     }
+    searchForm.reset();
 });
