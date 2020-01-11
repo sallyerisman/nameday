@@ -6,6 +6,10 @@
 const searchForm = document.querySelector("#search-form");
 const resultWrapper = document.querySelector("#result-wrapper");
 
+const noMatch = () => {
+    resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+};
+
 //Function for rendering date of specific name day
 const renderDay = (name, nameSearch) => {
     name.results.forEach(nameEl => {
@@ -14,7 +18,7 @@ const renderDay = (name, nameSearch) => {
         nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
         
         if (nameEl.name !== nameSearch) {
-            resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+            noMatch();
         } else {
         resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
@@ -83,7 +87,7 @@ searchForm.addEventListener("submit", function(e) {
                 if (name.results.length > 0) {
                     renderDay(name, nameSearch);
                 } else {
-                    resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+                    noMatch();
                 }                
             } else {
                 renderError();
