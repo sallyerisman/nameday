@@ -25,7 +25,8 @@ body {
 }
 
 .name-search,
-.date-search {
+.date-search,
+.country-selection {
     background-color: #d9f1e3;
     padding: 6px;
     border-radius: 20px;
@@ -36,6 +37,7 @@ body {
     align-items: center;
 }
 
+.name-search,
 .date-search {
     margin-top: 3rem;
 }

@@ -2,29 +2,34 @@ const searchForm = document.querySelector("#search-form");
 
 
 //Function for rendering date of specific name day
-// const renderDay = name => {
-//     console.log("Name", name);
+// const renderDay = (name, userSearch) => {
 
 //     name.results.forEach(nameEl => {
-//         // if (nameEl.name !== inputName[0].toUpperCase() + inputName.slice(1)) {
-//         // } else {
-//             document.querySelector("#result-wrapper").innerHTML = `
+//         userSearch = userSearch[0].toUpperCase() + userSearch.slice(1);
+
+//         document.querySelector("#result-wrapper").innerHTML = `
 //             <div class="col-sm-12 col-md-10 col-lg-8 result">
-//                 <h1 class="title">${nameEl.name}</h1>
-//                 <p class="card-text">${nameEl.name} has a name day on ${nameEl.day}/${nameEl.month}</p>
+//                 <h1 class="title">${userSearch}</h1>
+//                 <p class="card-text">has a name day on ${nameEl.day}/${nameEl.month}</p>
+//                 <p class="card-text">All names celebrating their name day on this day: ${nameEl.name}.</p>
 //             </div>
 //         `;
-//         // }
 //     })
 // };
 
 // //Function for rendering date of specific name day
-const renderNames = (date, month, day) => {
-    console.log("Date is", date);
+const renderNames = (date, country, month, day) => {
+
+    // const namedaysByCountry = date.data.map(names => {
+    //     `${names.namedays}.${country} has a name day!`
+    // });
+
+    // console.log(`Get:${date.data[0].namedays}.${country}`);
+  
     document.querySelector("#result-wrapper").innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
         <h1 class="title">${day}/${month}</h1>
-        <p class="card-text">${date.data[0].namedays.se} has a name day!</p>
+        <p class="card-text">Names: ${date.data[0].namedays.se} has a name day!</p>
     </div>
     `;   
 };
@@ -33,16 +38,19 @@ const renderNames = (date, month, day) => {
 searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // const inputName = document.querySelector("#name");
-    // const userSearch = inputName.value;
+    const day = document.querySelector("#day").value;
+    const month = document.querySelector("#month").value;
+    const country = document.querySelector("#country").value;
+    const inputName = document.querySelector("#name");
+    const userSearch = inputName.value;
 
-    // inputName.value = "";
+    inputName.value = "";
 
-    // getDayByName(userSearch)
+    // getDayByName(userSearch, country)
 	// 	.then(name => {
     //         if(200) {
-    //             renderDay(name);
-    //             console.log("Hello", name);
+    //             renderDay(name, userSearch);
+    //             console.log("All is well");
     //         } else {
     //             console.log("Error, not 200");
     //         } 
@@ -52,14 +60,12 @@ searchForm.addEventListener('submit', function(e) {
 	// 		console.log("Error:", err);
 	// 	});
 
-    const day = document.querySelector("#day").value;
-    const month = document.querySelector("#month").value;
 
-    getNamesByDay(month, day)
+    getNamesByDay(country, month, day)
 		.then(date => {
             if(200) {
-                renderNames(date, month, day);
-                console.log("Hello", name);
+                renderNames(date, country, month, day);
+                console.log("All is well");
             } else {
                 console.log("Error, not 200");
             } 

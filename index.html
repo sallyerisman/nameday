@@ -21,6 +21,29 @@
 
     <div class="container">
         <form id="search-form" class="row">
+
+            <!-- Country selection -->
+            <section class="col-sm-9 country-selection">
+                <div class="input-field first-wrap input-group">
+                    <select class="custom-select" id="country" aria-label="Select country">
+                        <option value="se">Country</option>
+                        <option value="at">Austria</option>
+                        <option value="hr">Croatia</option>
+                        <option value="cz">Czech Republic</option>
+                        <option value="dk">Denmark</option>
+                        <option value="fi">Finland</option>
+                        <option value="fr">France</option>
+                        <option value="de">Germany</option>
+                        <option value="hu">Hungary</option>
+                        <option value="it">Italy</option>
+                        <option value="pl">Poland</option>
+                        <option value="sk">Slovakia</option>
+                        <option value="es">Spain</option>
+                        <option value="se">Sweden</option>
+                        <option value="us">USA</option>
+                    </select>
+                </div>                   
+            </section>
             
             <!-- Name search bar -->
             <section class="col-sm-9 name-search">
@@ -35,8 +58,8 @@
 
              <!-- Date search bar -->
              <section class="col-sm-9 date-search">
-                    <div id="date" class="input-field first-wrap input-group mb-3">
-                        <select class="custom-select" id="day" aria-label="Select option">
+                    <div id="date" class="input-field first-wrap input-group">
+                        <select class="custom-select" id="day" aria-label="Select day">
                             <option value="" disabled selected>Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
