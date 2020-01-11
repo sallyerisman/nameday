@@ -5,6 +5,7 @@ const resultWrapper = document.querySelector("#result-wrapper");
 const renderDay = (name, nameSearch) => {
 
     name.results.forEach(nameEl => {
+        // Capitalize name input
         nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
 
         resultWrapper.innerHTML = `
@@ -14,11 +15,11 @@ const renderDay = (name, nameSearch) => {
                 <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
                 <img class="cake" src="assets/images/cake.png" alt="Cake"> 
             </div>
-        `;
+            `;
     });
 };
 
-// //Function for rendering name days on a specific day
+//Function for rendering name days on a specific day
 const renderNames = (date, country, month, day) => {
 
     resultWrapper.innerHTML = `
@@ -38,18 +39,13 @@ const renderError = () => {
 // Event listener for radio buttons
 document.querySelector(".radio-buttons").addEventListener("click", function(e) {
     
-    const nameSearch = document.querySelector("#name-search");
-    const dateSearch = document.querySelector("#date-search");
-    const byName = document.querySelector("#by-name");
-    const byDate = document.querySelector("#by-date");
+    if (document.querySelector("#by-name").checked) {
+        document.querySelector("#name-search").classList.add("show");
+        document.querySelector("#date-search").classList.remove("show");
 
-    if (byName.checked) {
-        nameSearch.classList.add("show");
-        dateSearch.classList.remove("show");
-
-	} else if (byDate.checked) {
-        dateSearch.classList.add("show");
-        nameSearch.classList.remove("show");
+	} else if (document.querySelector("#by-date").checked) {
+        document.querySelector("#date-search").classList.add("show");
+        document.querySelector("#name-search").classList.remove("show");
     }
 });
 
@@ -60,10 +56,7 @@ searchForm.addEventListener("submit", function(e) {
     const day = document.querySelector("#day").value;
     const month = document.querySelector("#month").value;
     const country = document.querySelector("#country").value;
-    
-    const inputName = document.querySelector("#name");
-    const nameSearch = inputName.value;
-    inputName.value = "";
+    const nameSearch = document.querySelector("#name").value;
 
     if (day & month) {
         getNamesByDay(country, month, day)
@@ -75,7 +68,7 @@ searchForm.addEventListener("submit", function(e) {
             } 
 		})
 		.catch(renderError);
-    } else if (inputName) {
+    } else if (nameSearch) {
         getDayByName(nameSearch, country)
 		.then(name => {
             if(200) {
@@ -88,8 +81,7 @@ searchForm.addEventListener("submit", function(e) {
                 renderError();
             }   
 		})
-		.catch(renderError);
-        
+		.catch(renderError);    
     } else {
         console.log("You did not select an option");
     }
