@@ -55,7 +55,8 @@ h2 {
 
 #name-search,
 #date-search,
-.country-selection {
+#country-selection,
+#timezone-selection {
     background-color: var(--background-green);
     padding: 6px;
     border-radius: 20px;
@@ -67,13 +68,30 @@ h2 {
     align-items: center;
 }
 
-.country-selection {
+#country-selection {
     display: flex;
 }
 
+#todays {
+    text-align: center;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    display: none;
+}
+
+#todays p {
+    margin-top: 1rem;
+}
+
 #name-search.show,
-#date-search.show {
+#date-search.show,
+#timezone-selection.show {
     display: flex;
+}
+
+#todays.show {
+    display: block;
 }
 
 #all-button {
@@ -88,6 +106,16 @@ h2 {
 button, input[type="color"], input[type="reset"], input[type="button"], input[type="submit"] {
     border: none;
     background-color: none;
+}
+
+button img#cake {
+    width: 100%;
+}
+
+button#cake-button {
+    width: 30%;
+    background: none;
+    margin-top: 1rem;
 }
 
 .form-check {
@@ -120,6 +148,14 @@ button, input[type="color"], input[type="reset"], input[type="button"], input[ty
 /* Tablet */
 
 @media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    #todays p {
+        font-size: 1.2rem;
+    }
+    
     #all-button {
         font-size: 3rem;
         padding: 1.2rem;
@@ -133,6 +169,10 @@ button, input[type="color"], input[type="reset"], input[type="button"], input[ty
 /* Desktop */
 
 @media only screen and (min-width: 992px) {
+    h1 {
+        font-size: 4rem;
+    }
+    
     #all-button {
         font-size: 4rem;
         padding: 1.5rem;
