@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300|Roboto:300&display=swap');
+
+:root {
+    --background-green: #d9f1e3;
+    --accent-green: #00ad5f; 
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +14,8 @@
 body {
     background-image: url("../images/watercolor-bright.jpg");
     background-size: cover;
-    color: #333; 
+    color: #333;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -15,6 +23,23 @@ body {
     height: 100vh;
     margin: 0 auto;
     padding: 3rem;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif; 
+    color: #FFFF00;
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 3px 3px 3px #333;
+    margin: 1rem 0;
+}
+
+h2 {
+    color: var(--accent-green);
+    font-weight: bold;
 }
 
 #search-form {
@@ -31,10 +56,10 @@ body {
 #name-search,
 #date-search,
 .country-selection {
-    background-color: #d9f1e3;
+    background-color: var(--background-green);
     padding: 6px;
     border-radius: 20px;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     display: none;
     flex-direction: row;
@@ -52,11 +77,11 @@ body {
 }
 
 #all-button {
-    font-size: 4rem;
-    color: #00ad5f;
-    background-color: #d9f1e3;
-    margin-top: 4rem;
-    padding: 1.5rem;
+    font-size: 2rem;
+    color: var(--accent-green);
+    background-color: var(--background-green);
+    margin-top: 2rem;
+    padding: 1rem;
     border-radius: 100%;
 }
 
@@ -65,27 +90,24 @@ button, input[type="color"], input[type="reset"], input[type="button"], input[ty
     background-color: none;
 }
 
-input[type="radio"]:checked {
-    background-color: #00ad5f;
-}
-
 .form-check {
     margin-top: 1rem;
-    background-color: #d9f1e3;
-    padding: 0.2rem;
+    background-color: var(--background-green);
+    padding: 0.4rem;
 }
 
 #result-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin: 3rem 0;
 }
 
 .result {
-    background-color: #d9f1e3;
+    background-color: var(--background-green);
     text-align: center;
+    box-shadow: 3px 3px 3px #555;
     border-radius: 30px;
-    padding: 2rem 0.5rem;
+    padding: 2rem 1.3rem;
 }
 
 .cake {
@@ -93,6 +115,33 @@ input[type="radio"]:checked {
 }
 
 
+/* Responsive layout styles */
+
+/* Tablet */
+
+@media only screen and (min-width: 768px) {
+    #all-button {
+        font-size: 3rem;
+        padding: 1.2rem;
+    }
+    
+    #result-wrapper {
+        margin-bottom: 4rem;
+    }
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 992px) {
+    #all-button {
+        font-size: 4rem;
+        padding: 1.5rem;
+    }
+    
+    #result-wrapper {
+        margin-bottom: 5rem;
+    }
+} 
 
 
 

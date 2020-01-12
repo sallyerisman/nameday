@@ -22,7 +22,7 @@ const renderDay = (name, nameSearch) => {
         } else {
         resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
-                <h1 class="title">${nameSearch}</h1>
+                <h2 class="title">${nameSearch}</h2>
                 <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
                 <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
                 <img class="cake" src="assets/images/cake.png" alt="Cake"> 
@@ -36,7 +36,7 @@ const renderDay = (name, nameSearch) => {
 const renderNames = (date, country, month, day) => {
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
-        <h1 class="title">${day}/${month}</h1>
+        <h2 class="title">${day}/${month}</h2>
         <p class="card-text">På denna dag i har ${date.data[0].namedays[country]} namnsdag!</p>
         <img class="cake" src="assets/images/cake.png" alt="Cake">  
     </div>
