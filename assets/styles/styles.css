@@ -49,14 +49,13 @@ h2 {
     align-items: center;
 }
 
-#search-by-name {
+.search-by-name {
     width: 100%;
 }
 
-#name-search,
-#date-search,
-#country-selection,
-#timezone-selection {
+.name-search,
+.date-search,
+.country-timezone{
     background-color: var(--background-green);
     padding: 6px;
     border-radius: 20px;
@@ -68,30 +67,26 @@ h2 {
     align-items: center;
 }
 
-#country-selection {
+.country-timezone {
     display: flex;
+    flex-wrap: wrap;
+    grid-gap: 5px;
 }
 
-#todays {
+.todays {
     text-align: center;
     color: white;
     font-style: italic;
     font-weight: bold;
-    display: none;
 }
 
-#todays p {
+.todays p {
     margin-top: 1rem;
 }
 
-#name-search.show,
-#date-search.show,
-#timezone-selection.show {
+.name-search.show,
+.date-search.show {
     display: flex;
-}
-
-#todays.show {
-    display: block;
 }
 
 #all-button {
@@ -103,19 +98,26 @@ h2 {
     border-radius: 100%;
 }
 
+#all-button:hover {
+    font-size: 2rem;
+}
+
 button, input[type="color"], input[type="reset"], input[type="button"], input[type="submit"] {
     border: none;
     background-color: none;
 }
 
-button img#cake {
-    width: 100%;
+button#cake-button {
+    width: 15%;
+    background: none;
 }
 
-button#cake-button {
-    width: 30%;
-    background: none;
-    margin-top: 1rem;
+button#cake-button:hover {
+    width: 16%;
+}
+
+button img.cake-button {
+    width: 100%;
 }
 
 .form-check {
@@ -152,7 +154,7 @@ button#cake-button {
         font-size: 3.5rem;
     }
 
-    #todays p {
+    .todays p {
         font-size: 1.2rem;
     }
     

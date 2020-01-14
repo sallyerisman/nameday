@@ -24,11 +24,12 @@
 
         <form id="search-form" class="row">
 
-            <!-- Country selection -->
-            <section class="col-sm-9" id="country-selection">
+            <!-- Country and timezone selection -->
+            <div class="col-12 col-md-8 country-timezone">
                 <div class="input-field first-wrap input-group">
                     <select class="custom-select" id="country" aria-label="Select country">
                         <option value="se">Välj land</option>
+                        <option value="se">Sverige</option>
                         <option value="dk">Danmark</option>
                         <option value="fi">Finland</option>
                         <option value="fr">Frankrike</option>
@@ -37,18 +38,39 @@
                         <option value="pl">Polen</option>
                         <option value="sk">Slovakien</option>
                         <option value="es">Spanien</option>
-                        <option value="se">Sverige</option>
                         <option value="cz">Tjeckien</option>
                         <option value="de">Tyskland</option>
                         <option value="hu">Ungern</option>
                         <option value="us">USA</option>
                         <option value="at">Österrike</option>
                     </select>
-                </div>                   
-            </section>
+                </div>
+                <div class="input-field first-wrap input-group">
+                    <select class="custom-select" id="timezone" aria-label="Select timezone">
+                        <option value="Europe/Amsterdam">Välj tidszon (valfritt)</option>
+                        <option value="Europe/Amsterdam">Europa/Amsterdam</option>
+                        <option value="Europe/Helsinki">Europa/Helsingfors</option>
+                        <option value="America/Anchorage">USA/Anchorage</option>
+                        <option value="America/Chicago">USA/Chicago</option>
+                        <option value="America/Denver">USA/Denver</option>
+                        <option value="America/Los_Angeles">USA/Los_Angeles</option>
+                        <option value="America/Phoenix">USA/Phoenix</option>
+                        <option value="Pacific/Honolulu">USA/Honolulu</option>
+                    </select>
+                </div>                      
+            </div>
+
+            <!-- Quick search today's date -->
+            <div class="todays">           
+                <p>Klicka på tårtan för att se vem som har namnsdag idag!</p>
+                <button id="cake-button" type="button">     
+                    <img class="cake-button" src="assets/images/cake.png" alt="Cake">
+                </button>  
+                <p>...eller...</p> 
+            </div>
 
             <!-- Radio buttons -->
-            <section class="radio-buttons">
+            <div class="radio-buttons">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="search_for" id="by-name" value="artists">
                     <label class="form-check-label" for="by-name">Sök på namn</label>
@@ -57,10 +79,10 @@
                     <input class="form-check-input" type="radio" name="search_for" id="by-date" value="albums">
                     <label class="form-check-label" for="by-date">Sök på datum</label>
                 </div>
-            </section>
+            </div>
 
             <!-- Date search bar -->
-            <section class="col-sm-6" id="date-search">
+            <div class="col-sm-6 date-search">
                 <div id="date" class="input-field input-group">
                     <select class="custom-select" id="day" aria-label="Select day">
                         <option disabled selected>Välj dag</option>
@@ -112,46 +134,22 @@
                         <option value="12">Dec</option>
                     </select>
                 </div>        
-            </section> 
-            
-            <!-- Quick search today's date -->
-            <section id="todays">           
-                <p>...eller klicka på tårtan för att se vem som har namnsdag idag!</p>
-                <button id="cake-button" type="button">     
-                    <img id="cake" src="assets/images/cake.png" alt="Cake">
-                </button>   
-            </section>
-
-            <!-- Timezone selection -->
-            <section class="col-8 col-md-6 col-lg-4" id="timezone-selection">
-                <div class="input-field first-wrap input-group">
-                    <select class="custom-select" id="timezone" aria-label="Select timezone">
-                        <option value="Europe/Amsterdam">Välj tidszon (valfritt)</option>
-                        <option value="Europe/Amsterdam">Europa/Amsterdam</option>
-                        <option value="America/Anchorage">USA/Anchorage</option>
-                        <option value="America/Chicago">USA/Chicago</option>
-                        <option value="America/Denver">USA/Denver</option>
-                        <option value="America/Los_Angeles">USA/Los_Angeles</option>
-                        <option value="America/Phoenix">USA/Phoenix</option>
-                        <option value="Pacific/Honolulu">USA/Honolulu</option>
-                    </select>
-                </div>                     
-            </section>
-            
+            </div>
+          
             <!-- Name search bar -->
-            <section class="col-sm-9" id="name-search">
-                <div class="input-field" id="search-by-name">
+            <div class="col-sm-9 name-search">
+                <div class="input-field search-by-name">
                     <input id="name" type="text" class="form-control" placeholder="Skriv in ett namn">
                 </div>
-            </section>
+            </div>
 
             <button id="all-button" class="fa fa-search" type="submit">     
             </button>         
         </form> <!-- End of search form -->
 
         <!-- Results -->
-        <section id="result-wrapper" class="row">  
-        </section> 
+        <article id="result-wrapper" class="row">  
+        </article> 
 
     </main> <!-- End of container -->
      
