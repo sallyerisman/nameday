@@ -12,8 +12,10 @@
 }
 
 body {
-    background-image: url("../images/watercolor-bright.jpg");
+    background-image: url("../images/resized-watercolor.jpg");
     background-size: cover;
+    background-position: center right;
+    height: 100%;
     color: #333;
     font-family: 'Roboto', sans-serif;
 }
@@ -33,7 +35,6 @@ h1 {
     letter-spacing: 1.2px;
     text-transform: uppercase;
     font-weight: 900;
-    text-shadow: 3px 3px 3px #666;
     margin: 1rem 0;
 }
 
@@ -150,6 +151,7 @@ button img.cake-button {
 /* Tablet */
 
 @media only screen and (min-width: 768px) {
+    
     h1 {
         font-size: 3.5rem;
     }

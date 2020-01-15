@@ -15,37 +15,30 @@ const renderError = () => {
     resultWrapper.innerHTML = `<div class="alert alert-danger">Sökning misslyckades: Det gick inte att hämta data för denna begäran.</div>`;
 };
 
+const printDay = (nameEl, nameSearch) => {
+    resultWrapper.innerHTML = `
+    <div class="col-sm-12 col-md-10 col-lg-8 result">
+        <h2 class="title">${nameSearch}</h2>
+        <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
+        <p class="card-text">Alla som har namnsdag denna dag: ${nameEl.name}.</p>
+    </div>
+    `;
+};
+
 //Function for rendering date of specific name day
 const renderDay = (name, nameSearch) => {
-    // Capitalize name input
     nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
 
     // Find and render only exact match when also receiving truthy results
     name.results.find(nameEl => {
-
         if (nameEl.name === nameSearch) {
-            resultWrapper.innerHTML = `
-            <div class="col-sm-12 col-md-10 col-lg-8 result">
-                <h2 class="title">${nameSearch}</h2>
-                    <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
-                    <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
-
-                <img class="cake" src="assets/images/cake.png" alt="Cake"> 
-            </div>
-            `;
-        } 
+           printDay(nameEl, nameSearch);
+        }
     });
 
     // Render result with multiple names 
-    name.results.forEach(nameElSecond => {
-        resultWrapper.innerHTML = `
-            <div class="col-sm-12 col-md-10 col-lg-8 result">
-                <h2 class="title">${nameSearch}</h2>
-                <p class="card-text">har namnsdag den ${nameElSecond.day}/${nameElSecond.month}</p>
-                <p class="card-text">Här är alla som har namnsdag denna dag: ${nameElSecond.name}.</p>
-                <img class="cake" src="assets/images/cake.png" alt="Cake"> 
-            </div>
-            `;
+    name.results.forEach(nameEl => {
+        printDay(nameEl, nameSearch);
     });
 };
 
@@ -54,8 +47,7 @@ const renderNames = (date, country, month, day) => {
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
         <h2 class="title">${day}/${month}</h2>
-        <p class="card-text">Den ${day}/${month} har ${date.data[0].namedays[country]} namnsdag!</p>
-        <img class="cake" src="assets/images/cake.png" alt="Cake">  
+        <p class="card-text">Den ${day}/${month} har ${date.data[0].namedays[country]} namnsdag!</p> 
     </div>
     `;   
 };
