@@ -2,15 +2,15 @@
 * NAME DAY APP
 * Main script
 */
-
 const searchForm = document.querySelector("#search-form");
 const resultWrapper = document.querySelector("#result-wrapper");
 
+// Function for rendering specific error message
 const renderNoMatch = () => {
-    resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för detta namn.</div>`;
+    resultWrapper.innerHTML = `<div class="alert alert-warning">Tyvärr, vi kunde inte hitta en namnsdag för denna sökning.</div>`;
 };
 
-// Function for rendering error message
+// Function for rendering generic error message
 const renderError = () => {
     resultWrapper.innerHTML = `<div class="alert alert-danger">Sökning misslyckades: Det gick inte att hämta data för denna begäran.</div>`;
 };
@@ -20,15 +20,16 @@ const renderDay = (name, nameSearch) => {
     // Capitalize name input
     nameSearch = nameSearch[0].toUpperCase() + nameSearch.slice(1);
 
-    // Find and render exact match when delivered multiple results
+    // Find and render only exact match when also receiving truthy results
     name.results.find(nameEl => {
 
         if (nameEl.name === nameSearch) {
             resultWrapper.innerHTML = `
             <div class="col-sm-12 col-md-10 col-lg-8 result">
                 <h2 class="title">${nameSearch}</h2>
-                <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
-                <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
+                    <p class="card-text">har namnsdag den ${nameEl.day}/${nameEl.month}</p>
+                    <p class="card-text">Här är alla som har namnsdag denna dag: ${nameEl.name}.</p>
+
                 <img class="cake" src="assets/images/cake.png" alt="Cake"> 
             </div>
             `;
@@ -48,7 +49,7 @@ const renderDay = (name, nameSearch) => {
     });
 };
 
-//Function for rendering name days on a specific day
+//Function for rendering name days on a specific date
 const renderNames = (date, country, month, day) => {
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
@@ -59,7 +60,7 @@ const renderNames = (date, country, month, day) => {
     `;   
 };
 
-//Function for rendering who has a name day today
+//Function for rendering today's name day
 const renderNameday = (date, country) => {
     resultWrapper.innerHTML = `
     <div class="col-sm-12 col-md-10 col-lg-8 result">
@@ -91,11 +92,7 @@ document.querySelector("#cake-button").addEventListener("click", function(e) {
     
     getTodaysNamedays(country, timezone)
 		.then(date => {
-            if(200) {
-                renderNameday(date, country);
-            } else {
-                renderError();
-            } 
+            renderNameday(date, country);
 		})
         .catch(renderError);
         searchForm.reset();
@@ -113,29 +110,21 @@ searchForm.addEventListener("submit", function(e) {
     if (nameSearch) {
         getDayByName(nameSearch, country)
 		.then(name => {
-            if(200) {
-                if (name.results.length > 0) {
-                    renderDay(name, nameSearch);
-                } else {
-                    renderNoMatch();
-                }                
+            if (name.results.length > 0) {
+                renderDay(name, nameSearch);
             } else {
-                renderError();
-            }   
-		})
+                renderNoMatch();
+            } 
+        })
         .catch(renderError);
-    } else if (day) {
+    } else if (day && month) {
         getNamesByDay(country, month, day)
 		.then(date => {
-            if(200) {
-                renderNames(date, country, month, day);
-            } else {
-                renderError();
-            } 
+            renderNames(date, country, month, day);
 		})
 		.catch(renderError);  
     } else {
-        resultWrapper.innerHTML = `<div class="alert alert-warning">Sökning misslyckades. Vänligen sök på antingen namn eller datum.</div>`;
+        resultWrapper.innerHTML = `<div class="alert alert-warning">Sökning misslyckades. Vänligen kontrollera att du sökt på antingen namn eller datum.</div>`;
     }
     searchForm.reset();
 });
